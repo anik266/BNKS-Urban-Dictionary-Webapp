@@ -1,0 +1,21 @@
+<div class="bnks-urban-search-view-container">
+  Found <b>{{searchResult.length}}</b> result(s) for "{{searchText}}" <br/>
+  <hr/>
+
+  <div class="bnks-urban-search-result-container" ng-if="searchResult.length>0" ng-repeat="result in searchResult">
+    <div class="bnks-urban-word-word">
+      <a ng-href="#/word/{{result._id}}">{{result.wordname}}</a>
+    </div>
+    <span class="bnks-urban-search-context-container" ng-repeat="context in result.definitions">
+      <span class="bnks-urban-search-context-def">{{context.definition | limitTo: 75}}</span>
+      <span class="bnks-urban-search-context-exa">{{context.example | limitTo: 50}}</span>
+      <br/>
+    </span>
+  </div>
+
+  <div class="bnks-urban-search-noresult" ng-if="searchResult.length === 0">
+    Whoops! Perhaps your search query was too specific. Please try a broader search keyword.
+    <p>Or help us expand our dictionary. Add your own definition for {{searchText}}!</p> 
+    <a class="bnks-urban-red-text bnks-urban-clickable" ng-href="#/login-register">You must be logged in to add definitions.</a>
+  </div>
+</div>

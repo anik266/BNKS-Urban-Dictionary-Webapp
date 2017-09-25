@@ -1,0 +1,22 @@
+<div class="bnks-urban-add-new-word-container">
+  <div class="bnks-urban-add-new-word-form">
+  <form ng-submit="post_definition_function()">
+  <fieldset>
+  <legend><span class="bnks-urban-add-new-word-number">1</span> Define A Word</legend>
+  <input type="text" name="field1" id="bnks-urban-add-new-wordname" placeholder="Word *" ng-model="main.customAddWordDefinitionName" required>
+  <div class="bnks-urban-add-new-word-form-instruction">
+  <b>Write for a large audience.</b> Lots of people will read this, so give some background information.<br/>
+  <b>Don't name your friends.</b> Be creative.
+  </div>
+  <textarea type="text" name="field2" class="bnks-urban-add-new-extra" placeholder="Type your definition here... *" ng-model="add_definition" required></textarea>
+  <textarea name="field3" class="bnks-urban-add-new-extra" placeholder="Type an example of how it's used in a sentence..." ng-model="add_example"></textarea>
+  </fieldset>
+  <fieldset>
+  <legend><span class="bnks-urban-add-new-word-number">2</span> Tags</legend>
+  <textarea name="field3" placeholder="Enter upto 5 tags separated with comma..." ng-model="add_tags_string"></textarea>
+  </fieldset>
+  <input type="submit" value="Add This Word" />
+  </form>
+  <a ng-if="adding_failed_not_logged_in" class="bnks-urban-red-text bnks-urban-clickable" ng-href="#/login-register">You must be logged in to add definitions.</a>
+  </div>
+</div>

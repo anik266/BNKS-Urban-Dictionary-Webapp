@@ -1,0 +1,123 @@
+.container{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.container md-content{
+  /*overflow-y:hidden;*/
+}
+
+.bnks-urban-toolbar{
+  height:120px;
+  max-height: 120px;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: #0f1d33;
+  color: rgba(255,255,255,0.87);
+}
+
+.bnks-urban-md-toolbar-container{
+  padding: 0% 16% 0% 16%;
+}
+
+.bnks-urban-toolbar-logo-container{
+  padding: 1% 16% 0% 16%;
+}
+
+.bnks-urban-toolbar-menu-text:hover{
+  cursor: pointer;
+  color: yellow;
+}
+
+.bnks-urban-toolbar-menu-text{
+  color: white;
+  font-size: 14px;
+  margin: 5px;
+  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+  background-color: black;
+  padding: 7px 10px 7px 10px;
+}
+
+.md-toolbar-tools a{
+  color: white;
+}
+
+.md-toolbar-tools a:hover{
+  color: yellow;
+}
+
+.bnks-urban-search-form{
+  /*width: 100%;*/
+  margin-right: 5px;
+}
+.bnks-urban-search{
+  padding: 5px 10px 5px 10px;
+  margin-right: 10px;
+  width: 100%;
+  font-size: 14px;
+  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+.md-sidenav-right{
+  /*margin-right: 15%;*/
+}
+
+
+md-content::-webkit-scrollbar {
+    display: none;
+}
+
+md-sidenav{
+  width: 20vw;
+  max-width: 300px;
+  margin-right: 30px;
+}
+
+md-sidenav::-webkit-scrollbar {
+    display: none;
+}
+
+.bnks-urban-random-words-container{
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.bnks-random-words-headline{
+  display: block;
+  padding: 10px 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+.bnks-urban-each-random-word{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bnks-urban-random-word-word{
+  color:white;
+  font-weight: 500;
+  font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+  background-color: #0056e0;
+  padding: 5px 10px 5px 10px;
+  line-height: 1.7em;
+}
+
+.bnks-urban-random-word-word:hover{
+  color: yellow;
+}
+
+.bnks-urban-each-random-word a{
+  color:white;
+  text-decoration: none;
+}
+
+
+.bnks-urban-each-random-word{ transition: all .1s ease-in-out; }
+.bnks-urban-each-random-word:hover { transform: scale(1.1); }

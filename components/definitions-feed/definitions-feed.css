@@ -1,0 +1,64 @@
+.bnks-urban-difinitions-feed-container a{
+  color:#0056e0;
+  text-decoration: none;
+}
+
+.bnks-urban-md-card{
+  background-color: white;
+}
+
+.bnks-urban-md-card-title{
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.bnks-urban-word-word{
+  font-weight: 500;
+  font: bold 30px "Century Schoolbook", Georgia, Times, serif;
+  letter-spacing: -1px;
+}
+
+.bnks-urban-word-meaning{
+  color:#303030;
+  font-size: 16px;
+}
+
+.bnks-urban-word-example{
+  color:#595959;
+  padding-bottom: 0px;
+  font-size: 14px;
+}
+
+.bnks-urban-word-example, .bnks-urban-word-meaning{
+  font-family:georgia;
+  font-weight:normal;
+}
+
+
+.bnks-urban-tag{
+  float:left;
+  margin-right: 10px;
+}
+
+.col-md-5 li{
+  list-style-type: none;
+}
+
+.bnks-urban-tag-hashed{
+  color:#0047ba;
+  font-size: 0.9em;
+}
+
+.bnks-urban-definition-authcred{
+  padding-left: 8px;
+}
+
+.bnks-urban-auth-login-name{
+  padding: 0px 5px 0px 5px;
+  font-weight: 500;
+}
+
+.bnks-urban-md-card-actions{
+  margin-bottom: 10px;
+  margin-top: 0px;
+}

@@ -1,0 +1,35 @@
+<div class="bnks-urban-difinitions-feed-container" ng-repeat="word in main.words">
+  <md-card class="bnks-urban-md-card">
+    <md-card-title class="bnks-urban-md-card-title">
+      <md-card-title-text>
+        <span class="md-headline bnks-urban-word-word"><a ng-href="#/word/{{word.parent_id}}">{{word.word | limitTo: 40}}</a></span>
+        <span class="md-subhead bnks-urban-word-meaning">{{word.definition | limitTo: 140}}</span>
+      </md-card-title-text>
+
+    </md-card-title>
+    <md-card-content class="bnks-urban-word-example">
+      {{word.example | limitTo: 150}}
+    </md-card-content>
+
+    <div layout="row">
+      <ul class="col-md-5">
+        <li class="bnks-urban-tag" ng-repeat="tag in word.tags">
+          <div class="caption">
+            <span class="bnks-urban-tag-hashed">#{{tag}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <md-card-actions layout="row" layout-align="start center" class="bnks-urban-md-card-actions">
+      <span class="bnks-urban-definition-authcred">By<a ng-href="#/users/{{word.creator.user_id}}" class="bnks-urban-auth-login-name">{{word.creator.login_name}}</a>on {{word.date_time.split('T')[0]}}</span>
+
+      <div class="total-fav-count">{{word.faved_by.length}}</div>
+      <div class="bnks-urban-md-mod-options" ng-click="main.addToFav(word)">
+        <img ng-src="/images/res/star.png" />
+      </div>
+
+    </md-card-actions>
+
+  </md-card>
+</div>

@@ -1,0 +1,34 @@
+.bnks-urban-search-view-container{
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 5px 10px 25px 10px;
+  border-radius: 5px;
+  border: 0.1px hidden #444444;
+  background-color: #f4f4f4;
+  color: black;
+  font: 14px "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: -1;
+}
+
+.bnks-urban-search-view-container a{
+  color:#0056e0;
+  text-decoration: none;
+}
+
+.bnks-urban-search-result-container{
+  margin-bottom: 10px;
+}
+
+.bnks-urban-search-context-container{
+
+}
+
+.bnks-urban-search-context-def{
+  color: #1c1c1c;
+}
+
+.bnks-urban-search-context-exa{
+  color:#777777;
+  font-style: italic;
+}

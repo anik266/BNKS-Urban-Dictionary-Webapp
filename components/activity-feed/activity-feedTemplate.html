@@ -1,0 +1,38 @@
+<div class="cs142app-feed-activities-container">
+  <div class="cs142app-feed-activities-refresh-bar" ng-click="main.refreshFeed()">
+    <div>Click To Refresh</div>
+  </div>
+  <!-- <div class="cs142app-feed-activities-instruction">Displaying 20 most recent user activities here</div> -->
+  <div class="cs142app-feed-activities" ng-repeat="feed in main.feeds">
+
+    <div class="cs142app-feed-activity">
+
+
+    <div ng-if="feed.activity.image === null">
+      <img ng-if="feed.activity.activity_type === 'Login'" ng-src="/images/res/login.png" class="cs142app-feed-activity-icon" />
+      <img ng-if="feed.activity.activity_type === 'Logout'" ng-src="/images/res/logout.png" class="cs142app-feed-activity-icon" />
+      <img ng-if="feed.activity.activity_type === 'Signup'" ng-src="/images/res/signup.png" class="cs142app-feed-activity-icon" />
+      <a ng-href="#/users/{{feed.user.user_id}}"><strong>{{feed.user.first_name}} {{feed.user.last_name}}</strong></a> 
+      <span ng-if="feed.activity.activity_type === 'Login'"> logged in </span>
+      <span ng-if="feed.activity.activity_type === 'Logout'"> signed out </span>
+      <span ng-if="feed.activity.activity_type === 'Signup'"> just created their account </span>
+       at <span class="cs142app-feed-activity-date">{{feed.date_time}}</span>
+    </div>
+    <div ng-if="feed.activity.image !== null">
+      <img ng-if="feed.activity.activity_type === 'New Comment'" ng-src="/images/res/comment.png" class="cs142app-feed-activity-icon" />
+      <img ng-if="feed.activity.activity_type === 'Favorited'" ng-src="/images/res/add-fav.png" class="cs142app-feed-activity-icon" />
+      <img ng-if="feed.activity.activity_type === 'Photo Upload'" ng-src="/images/res/upload.png" class="cs142app-feed-activity-icon" />
+      <img ng-if="feed.activity.activity_type === 'Photo Like'" ng-src="/images/res/like.png" class="cs142app-feed-activity-icon" />
+      <a ng-href="#/users/{{feed.user.user_id}}"><strong>{{feed.user.first_name}} {{feed.user.last_name}}</strong></a> 
+      <span ng-if="feed.activity.activity_type === 'New Comment'"> posted a new comment on </span>
+      <span ng-if="feed.activity.activity_type === 'Favorited'"> favorited </span>
+      <span ng-if="feed.activity.activity_type === 'Photo Upload'"> uploaded the photo </span>
+      <span ng-if="feed.activity.activity_type === 'Photo Like'"> liked the photo </span>
+      <img class="cs142app-feed-activity-thumbnail" ng-src="/images/{{feed.activity.image}}" />
+       at <span class="cs142app-feed-activity-date">{{feed.date_time}}</span>
+    </div>
+
+    </div>
+
+  </div>
+</div>

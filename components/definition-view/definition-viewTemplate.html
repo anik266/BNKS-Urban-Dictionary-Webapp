@@ -1,0 +1,52 @@
+<div class="bnks-urban-md-card-container" ng-repeat="word in word.definitions | orderBy:['-faved_by.length', '-date_time'] track by $index" ng-if="word.word.length > 0">
+
+  <md-card class="bnks-urban-md-card">
+    <md-card-title class="bnks-urban-md-card-title">
+      <md-card-title-text>
+        <span ng-if="$index===0" class="top-definition-notifier">Top Definition</span>
+        <span class="md-headline bnks-urban-word-word"><a ng-href="#/word/{{word.parent_id}}">{{word.word}}</a></span>
+        <span class="md-subhead bnks-urban-word-meaning">{{word.definition}}</span>
+      </md-card-title-text>
+
+    </md-card-title>
+    <md-card-content class="bnks-urban-word-example">
+      {{word.example}}
+    </md-card-content>
+
+    <div layout="row">
+      <ul class="col-md-5">
+        <li class="bnks-urban-tag" ng-repeat="tag in word.tags">
+          <div class="caption">
+            <span class="bnks-urban-tag-hashed">#{{tag}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <md-card-actions layout="row" layout-align="start center" class="bnks-urban-md-card-actions">
+
+      <span class="bnks-urban-definition-authcred">By<a ng-href="#/users/{{word.creator.user_id}}" class="bnks-urban-auth-login-name">{{word.creator.login_name}}</a>on {{word.date_time.split('T')[0]}}</span>
+
+      <div class="total-fav-count">{{word.faved_by.length}}</div>
+      <div class="bnks-urban-md-mod-options" ng-click="main.addToFav(word)">
+        <img ng-src="/images/res/star.png" />
+      </div>
+      <div class="bnks-urban-md-mod-options" ng-if="main.currentUser.role > 2" ng-click="main.deleteDef(word)">
+        <img ng-src="/images/res/remove.png" />
+      </div>
+      <div class="bnks-urban-md-mod-options" ng-if="$index===0 && main.currentUser.role > 2" ng-click="main.deleteWord(word.parent_id)">
+        <img ng-src="/images/res/trash.png" />
+      </div>
+    </md-card-actions>
+  </md-card>
+
+  <div ng-if="$index===0 && !showPendingMessage" class="bnks-urban-add-def-container" ng-click="appendDefinition()">
+  Have a better meaning in mind? Add you own.
+  </div>
+</div>
+
+<div ng-if="showPendingMessage" class="bnks-urban-waiting-approval-msg-container">
+<span class="bnks-urban-waiting-approval-msg">
+Your word is being processed and will show up after it has been approved.
+</span>
+</div>

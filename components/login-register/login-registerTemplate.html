@@ -1,0 +1,53 @@
+<div class="cs142-login-view-container">
+
+  <div class="login" ng-if="displayLoginForm">
+    <h2>Log In</h2>
+    <form ng-submit="login()" method="post">
+    <fieldset>
+      <input type="text" ng-model="l.login_name" name="login_name" placeholder="Username" required/>
+      <input type="password" ng-model="l.password" name="pass_word" placeholder="Password" required/>
+    </fieldset>
+    <input type="submit" value="Login" id="login"/>
+    </form>
+
+    <div class="utilities">
+      <span ng-click="cancel()">Cancel</span>
+      <span ng-click="toggle()">Sign Up &rarr;</span>
+    </div>
+    <div class="cs142-login-register-login-error-box" ng-if="loginFailed">
+      <span class="cs142-login-register-login-error">Unable to login. Please verify your login details!</span>
+    </div>
+    <div class="cs142-login-register-register-success-box" ng-if="isRegisterSuccess">
+        <span class="cs142-login-register-success-message">{{successMessage}}</span>
+    </div>
+  </div>
+
+
+  <div class="login registration" ng-if="displaySignUpForm">
+    <h2>Sign Up</h2>
+    <form ng-submit="register()" method="post">
+    <fieldset>
+      <input type="text" ng-model="r.register_login_name" name="register_login_name" required placeholder="Username" />
+      <input type="password" ng-model="r.register_password1" placeholder="Password" name="pass_word1" ng-minlength="5" ng-maxlength="12" required/>
+      <input type="password" ng-model="r.register_password2" placeholder="Retype Password" name="pass_word2" ng-minlength="5" ng-maxlength="12" required/>
+    </fieldset>
+    <input type="submit" id="register" value="Register Me"/>
+    </form>
+
+    <div class="utilities">
+      <span ng-click="cancel()">Cancel</span>
+      <span ng-click="toggle()">&larr; Login</span>
+    </div>
+
+
+    <div class="cs142-login-register-register-error-box" ng-if="isRegisterError">
+      <div ng-repeat="errorMessage in registerErrors">
+        <span class="cs142-login-register-register-error">{{errorMessage}}</span>
+      </div>
+    </div>
+<!--     <div class="cs142-login-register-register-success-box" ng-if="isRegisterSuccess">
+        <span class="cs142-login-register-success-message">{{successMessage}}</span>
+    </div> -->
+  </div>
+
+</div>

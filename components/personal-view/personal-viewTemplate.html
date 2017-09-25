@@ -1,0 +1,119 @@
+<div class="bnks-urban-personal-view-container">
+  <span class="bnks-urban-personal-greeting">
+  Hello, <b>{{user.login_name}}</b>!
+  </span>
+  
+<div class="bnks-urban-user-stuff-container">
+  <div class="bnks-urban-contrlist-container">
+    You have contributed <a ng-href="#/users/{{userDetail._id}}"><b>{{userDetail.created.length}}</b></a> definitions so far! <br/>
+  </div>
+  <div class="bnks-urban-favlist-container">
+    You have <b>{{userDetail.faved.length}}</b> favorited definitions. <br/>
+    <div ng-repeat="result in userDetail.faved" ng-if="result.word.length > 0">
+      <div>
+        <a class="bnks-urban-word-word" ng-href="#/word/{{result.parent_id}}">{{result.word}}</a> 
+        <!-- <span ng-click="main.removeFromFav(result)" class="bnks-urban-red-text bnks-urban-clickable">[remove from favorites]</span> -->
+
+      <span class="bnks-urban-md-mod-options" ng-click="main.removeFromFav(result)">
+        <img ng-src="/images/res/remove.png" />
+      </span>
+
+
+      </div>
+      <span class="bnks-urban-search-context-container">
+        <span class="bnks-urban-search-context-def">{{result.definition | limitTo: 75}}</span>
+        <span class="bnks-urban-search-context-exa">{{result.example | limitTo: 50}}</span>
+        <br/>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- User priviledge permission controls are here -->
+<div ng-if="userDetail.role > 4" class="bnks-urban-admin-panel-toggle" ng-click="toggleAdminPanel()">Toggle Admin Controls</div>
+<div ng-if="userDetail.role > 4 && admin.showPanel">
+  <h2>Admin Permissions Controls</h2>
+  <p><b>{{userList.length}}</b> total users</p>
+
+    <select ng-model="data.selectedPerson" ng-options="o as o.login_name for o in userList" ng-change="admin.ActionMsg=''"></select>
+
+    <div>
+      <b>Username: </b><a ng-href="#/users/{{data.selectedPerson._id}}">{{data.selectedPerson.login_name}}</a><br>
+      <b>_id: </b>{{data.selectedPerson._id}}<br>
+      <b>Created: </b>{{data.selectedPerson.created.length}}<br>
+      <b>Favorited: </b>{{data.selectedPerson.faved.length}}</a><br>
+      <b>Authority: </b>{{data.selectedPerson.role}}
+      <span class="bnks-urban-personal-view-pending-controls" ng-if="data.selectedPerson.login_name !== 'admin'">
+        <select class="bnks-urban-admin-dropdown" name="allSelect" ng-model="data.newAuthority">
+          <option value="1">1 - Contributor</option>
+          <option value="3">3 - Moderator</option>
+          <option value="5">5 - Administrator</option>
+        </select>
+        <button ng-click="upDateAuth(data.selectedPerson._id, data.newAuthority)" class="bnks-urban-update-button">Update This User</button>
+        <button ng-click="deleteUser(data.selectedPerson._id)" class="bnks-urban-delete-button">Delete This User</button>
+        <span class="bnks-urban-admin-action-message">{{admin.ActionMsg}}</span>
+      </span>
+    </div>
+</div>
+
+<!-- Word approve and decline options are here -->
+<div ng-if="userDetail.role > 2" class="bnks-urban-admin-panel-toggle" ng-click="toggleModPanel()">Toggle Moderator Controls</div>
+<div ng-if="userDetail.role > 2 && admin.showMod">
+  <hr/>
+  <h2>Moderator Controls</h2>
+  <span class="bnks-urban-green-text bnks-urban-clickable" ng-click="refreshTask()">Reload</span>
+  <h3>{{pendingWords.length}} Words pending approval</h3>
+  <!-- {{pendingWords}} -->
+
+  <div ng-repeat="pword in pendingWords" ng-if="pword.wordname.length > 0">
+    <div>
+      <b>Word: </b>{{pword.wordname}}<br>
+      <b>Proposed meaning: </b>{{pword.definitions[0].definition}}<br>
+      <b>Proposed example: </b>{{pword.definitions[0].example}}<br>
+      <b>Created by: </b><a ng-href="#/users/{{pword.definitions[0].creator.user_id}}">{{pword.definitions[0].creator.login_name}}</a><br>
+      <b>Proposed tags: </b>{{pword.definitions[0].tags}}<br>
+      <b>Last modified: </b>{{pword.last_modified}}<br>
+      <span class="bnks-urban-personal-view-pending-controls">
+        <span ng-click="acceptWord(pword)" class="bnks-urban-green-text bnks-urban-clickable bnks-urban-action-button">
+          <span class="bnks-urban-md-mod-options">
+            <img ng-src="/images/res/approve.png" />
+          </span>
+        </span>
+        <span ng-click="declineWord(pword)" class="bnks-urban-red-text bnks-urban-clickable bnks-urban-action-button">
+          <span class="bnks-urban-md-mod-options">
+            <img ng-src="/images/res/decline.png" />
+          </span>
+        </span>
+      </span>
+    </div>
+    <hr/>
+  </div>
+</div>
+
+
+</div>
+
+
+<!-- 
+  <div ng-repeat="person in userList">
+
+    <div>
+      <b>Username: </b><a ng-href="#/users/{{person._id}}">{{person.login_name}}</a><br>
+      <b>_id: </b>{{person._id}}<br>
+      <b>Created: </b>{{person.created.length}}<br>
+      <b>Favorited: </b>{{person.faved.length}}</a><br>
+      <b>Authority: </b>{{person.role}}
+      <span class="bnks-urban-personal-view-pending-controls" ng-if="person.login_name !== 'admin'">
+
+        <select name="allSelect" ng-model="data.newAuthority">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+        </select>
+        <button ng-click="upDateAuth(person._id, data.newAuthority)">Update This User</button>
+        <button ng-click="deleteUser(person._id)">Delete This User</button>
+      </span>
+    </div>
+    <hr/>
+  </div>
+ -->
